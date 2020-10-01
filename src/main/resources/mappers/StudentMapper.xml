@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射-->
+<!--namespace 自定义的别名-->
+<mapper namespace="com.qk.dao.StudentDao">
+    <!--查询全部-->
+    <!--id 可以自定义  相当于方法名  id是唯一的-->
+    <select id="selectAll" resultType="Student">
+        select *from student
+    </select>
+    <!--根据id查询-->
+    <!--#{} 预编译符号-->
+    <select id="selectOne" resultType="Student">
+        select *from student where stuId=#{stuId}
+    </select>
+    <!--添加-->
+    <insert id="insert">
+        insert into student(stuName,stuLoginName,stuLoginPassword,stuAge,stuSex) values (#{stuName},#{stuLoginName},#{stuLoginPassword},#{stuAge},#{stuSex})
+    </insert>
+    <!--删除-->
+    <delete id="delete">
+       delete from student where stuId=#{stuId}
+
+    </delete>
+    <!--修改-->
+    <update id="update">
+    update student set stuName=#{stuName},stuLoginName=#{stuLoginName},stuLoginPassword=#{stuLoginPassword},stuAge=#{stuAge},stuSex=#{stuSex} where stuId=#{stuId}
+    </update>
+
+
+</mapper>

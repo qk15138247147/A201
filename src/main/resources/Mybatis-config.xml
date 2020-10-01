@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--配置-->
+<configuration>
+    <!--设置-->
+    <settings>
+        <!--配置显示SQL日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--配置自动映射的驼峰命名法-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+
+
+
+
+    <!--类型别名-->
+      <typeAliases>
+          <!--单个设置别名-->
+         <!-- <typeAlias type="com.qk.po.Student" alias="Student"/>-->
+          <!--以包名为单位设置 别名设置为实体类的名字-->
+         <package name="com.qk.po"/>
+      </typeAliases>
+    <!--环境变量-->
+    <!--development 开发者模式-->
+    <!--work  工作者模式-->
+    <environments default="development">
+        <!--其中一个环境变量-->
+        <environment id="development">
+            <!--事务管理器-->
+            <!--JDBC按照jdbc的事务管理模式-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据源-->
+            <!--池-->
+            <dataSource type="POOLED">
+                <!--数据库驱动-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <!--数据库路径-->
+                <property name="url" value="jdbc:mysql:///test"/>
+                <!--数据库用户名-->
+                <property name="username" value="root"/>
+                <!--数据库密码-->
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--注册映射文件-->
+    <mappers>
+        <mapper resource="mappers/StudentMapper.xml"/>
+    </mappers>
+</configuration>
